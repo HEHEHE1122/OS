@@ -12,7 +12,7 @@ do
 echo "choice??"
 read n
 case $n in
-1)echo "Sum="$((a + b) );;
+1)echo "Sum="$((a+b));;
 2)echo "Difference="$((a-b));;
 3)echo "Product="$((a*b));;
 4)echo "Reminder="$((a/b));;
