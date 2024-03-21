@@ -1,0 +1,10 @@
+clear
+echo "enter 3 numbers:"
+read num1 num2 num3
+let mean=($num1+$num2+$num3)/3
+n1=$(((n1-mean)*(n1-mean)))
+n2=$(((n2-mean)*(n2-mean)))
+n3=$(((n3-mean)*(n3-mean)))
+sd=$(echo "sqrt(($a+$b+$c)/3" | bc-l)
+echo "mean is :" $mean
+echo "standard deviation is:" $sd
