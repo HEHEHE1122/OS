@@ -1,0 +1,20 @@
+clear
+n=$#
+if ((n != 2))
+then
+ echo "Invalid argument."
+ exit
+fi
+if [ ! -e $1 ] || [ ! -e $2 ]
+then
+ echo Either \"$1\" or \"$2\" does not exist
+ exit
+fi
+cmp -s $1 $2
+if [ $? -eq 0 ]
+then
+ echo contents of are same. Thus \"$2\" deleted
+ rm $2
+else
+ echo contents of are not same. Thus not deleted
+fi

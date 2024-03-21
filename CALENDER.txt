@@ -1,0 +1,37 @@
+if [[ $# -eq 0 ]]; then
+  echo "Invalid Arguments: No year and month provided."
+  exit 1
+elif [[ $# -eq 2 ]]; then
+  if [[ $1 -gt 12 || $2 -gt 2024 ]]; then
+    echo "Invalid Arguments: Year or month out of range."
+    exit 1
+  fi
+  ncal "$1" "$2"
+else
+  if [[ $# -eq 1 ]]; then
+    if [[ $1 -gt 12 ]]; then
+      echo "Invalid Argument: Month out of range."
+      exit 1
+    fi
+    case $1 in
+      1) m="January";;
+      2) m="February";;
+      3) m="March";;
+      4) m="April";;
+      5) m="May";;
+      6) m="June";;
+      7) m="July";;
+      8) m="August";;
+      9) m="September";;
+      10) m="October";;
+      11) m="November";;
+      12) m="December";;
+      *) echo "Invalid Argument: Incorrect month number."; exit 1;;
+    esac
+    echo "Calendar for $m month: "
+    cal -m "$1"
+  else
+    echo "Invalid Arguments: Too many arguments provided."
+    exit 1
+  fi
+fi

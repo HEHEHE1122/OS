@@ -1,0 +1,6 @@
+echo "Enter The Number"
+read x
+echo "Enter the Power"
+read n
+pow=$((x ** n ))
+echo $n th power of $x is $pow

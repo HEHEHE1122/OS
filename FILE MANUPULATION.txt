@@ -1,0 +1,46 @@
+function get_input() {
+  echo "$1: "
+  read input
+  echo "$input"
+}
+
+dir_path=$(get_input "Enter directory path")
+
+ls -l "$dir_path"
+
+ls "$dir_path" | grep -v "^\."
+
+dir_name=$(get_input "Enter directory name")
+mkdir "$dir_name" && echo "Directory created successfully!" || echo "Error creating directory!"
+
+source_file=$(get_input "Enter source file path")
+destination=$(get_input "Enter destination path")
+if [[ -f "$source_file" ]]; then
+  cp "$source_file" "$destination" && echo "File copied successfully!" || echo "Error copying file!"
+elif [[ -d "$source_file" ]]; then
+  cp -r "$source_file" "$destination" && echo "Directory copied successfully!" || echo "Error copying directory!"
+else
+  echo "Source file/directory not found!"
+fi
+
+path_to_rename=$(get_input "Enter file/directory path to rename")
+new_name=$(get_input "Enter new name")
+if [[ -e "$path_to_rename" ]]; then
+  mv "$path_to_rename" "$new_name" && echo "Renamed successfully!" || echo "Error renaming!"
+else
+  echo "File/directory not found!"
+fi
+
+delete_dir=$(get_input "Do you want to delete a directory (y/n)?")
+if [[ "$delete_dir" =~ ^[Yy]$ ]]; then
+  path_to_delete=$(get_input "Enter directory path to delete")
+  if [[ -e "$path_to_delete" ]]; then
+    rm -rf "$path_to_delete" && echo "Deleted successfully!" || echo "Error deleting!"
+  else
+    echo "Directory not found!"
+  fi
+else
+  echo "Deletion skipped."
+fi
+
+echo "Operations completed."

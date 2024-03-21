@@ -1,0 +1,7 @@
+clear
+echo -n "Enter a line of text: "
+read string
+nc=$(echo $string | grep -o "[0-9]" | wc --lines)
+vc=$(echo $string | grep -o -i "[aeiou]" | wc --lines)
+cc=$(echo $string | grep -o -i "[bcdfghjklmnpqrstvwxyz]" | wc --lines)
+echo "The given string has $vc vowels, $cc consonants and $nc numbers in it."

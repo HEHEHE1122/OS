@@ -1,0 +1,7 @@
+clear
+echo -n "Enter the filename: "
+read path
+l=`wc -- lines < $path` 
+w=`wc -- words < $path`
+c=`wc -- char < $path`
+echo "The file $filename has $l lines, $w words and $c chars."

@@ -1,0 +1,24 @@
+clear
+n=$#
+if [n -lt 1 ] || [ $n -gt 2]
+then
+ echo "Invalid no.of arguments"
+ exit
+fi
+if [ $n -eq 1 ]
+then
+ echo "Destination file not mentioned"
+ exit
+fi
+if [ ! -e "$1" ]
+then
+ echo Source file \"$1\" Does not exists. Not copied
+ exit
+fi
+if [ -e "$2" ]
+then
+ echo Destination file \"$2\" Already exists. Not copied
+ exit
+fi
+cat $1 > $2
+echo $1 has been successfuly copied to $2
